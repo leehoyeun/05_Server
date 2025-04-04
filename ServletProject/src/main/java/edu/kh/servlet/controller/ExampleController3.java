@@ -2,6 +2,7 @@ package edu.kh.servlet.controller;
 
 import java.io.IOException;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -32,12 +33,16 @@ public class ExampleController3 extends HttpServlet {
 		System.out.println(type);
 		System.out.println(option);
 		System.out.println(optionArr); //주소값
-	
+		
+		if(optionArr != null) {
 		for(String opt : optionArr) {
 			System.out.println(opt);
 		}
+		}
 	
-	
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/result2.jsp");
+		
+		dispatcher.forward(req, resp);
 	
 	
 	}
