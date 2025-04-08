@@ -1,8 +1,10 @@
 package edu.kh.todoList.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
+import edu.kh.todoList.model.dto.Todo;
 import edu.kh.todoList.model.service.TodoListService;
 import edu.kh.todoList.model.service.TodoListServiceImpl;
 import jakarta.servlet.ServletException;
@@ -27,12 +29,39 @@ public class MainServlet extends HttpServlet {
 		//DB에 갔다오는일!
 		// 요청 -> Controller -> Service -> DAO -> DB
 		//	응답 <-	view <-		<-		<-		<-
-		
-		TodoListService service = new TodoListServiceImpl();
-		
-		//전체 할 일 목록 + 완료된 Todo 개수
-		Map<String, Object> map = service.todoListFullView();
-	
-	
+		try {
+ 			// DB에 갔다오는일!
+ 			// 요청 -> Controller -> Service -> DAO -> DB 
+ 			// 응답	<-	view  <-		<-		<-		<-
+ 			
+ 			TodoListService service = new TodoListServiceImpl();
+ 			
+ 			// 전체 할 일 목록 + 완료된 Todo 개수
+ 			Map<String, Object> map = service.todoListFullView();
+ 			
+ 			// Map 에 저장된 값 풀어내기
+ 			List<Todo> todoList = (List<Todo>)map.get("todoList");
+ 			
+ 			int completeCount = (int)map.get("completeCount");
+ 			
+ 			req.setAttribute("todoList", todoList);
+ 			req.setAttribute("completeCount", completeCount);
+ 			
+ 			//마지막으로 메인페이지의 응답을 담당하는 jsp에 요청 위임
+ 			String path = "/WEB-INF/views/main.jsp";
+ 			req.getRequestDispatcher(path).forward(req, resp);
+ 			
+ 			
+ 			
+ 			
+ 			
+ 		} catch (Exception e) {
+ 			e.printStackTrace();
+ 		}
+ 
+ 
+ 
+ 	}
+ 
 	}
-}
+
