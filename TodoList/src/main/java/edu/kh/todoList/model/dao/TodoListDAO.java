@@ -16,5 +16,9 @@ package edu.kh.todoList.model.dao;
 	Todo todoDetail(Connection conn, int todoNo) throws Exception;
 
 	int todoComplete(Connection conn, int todoNo) throws Exception;
+
+	int todoDelete(Connection conn, int todoNo) throws Exception;
+
+	int todoUpdate(Connection conn, int todoNo, String title, String detail) throws Exception;
  
  }

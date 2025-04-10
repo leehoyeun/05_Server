@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="/resources/css/detail.css">
 </head>
 <body>
+	<h1>${sessionScope.loginMember}</h1>
+
 	<h1>${todo.todoTitle}</h1>
 	
 	<div class="complete">
@@ -26,10 +28,11 @@
 	</div>
 
 	<div>
-		작성일 : ${todo.regDate}
+		작성일 : ${memo.regDate}
 	</div>
 	
-	<div class="content">${todo.todoDetail}</div>
+	
+	<div class="content">${memo.memoDetail}</div>
 	
 	<div class= "btn-container">
 		<div>
@@ -37,7 +40,7 @@
 		</div>
 		
 		<div>
-			<button id="completeBtn">완료 여부 변경</button>
+			<button id="completeBtn">비밀글</button>
 			<button id="updateBtn">수정</button>
 			<button id="deleteBtn">삭제</button>
 		</div>

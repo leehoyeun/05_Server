@@ -38,6 +38,21 @@ import edu.kh.todoList.model.dto.Todo;
 	 * @throws Exception
 	 */
 	int todoComplete(int todoNo)throws Exception;
+
+	/**할 일 삭제 서비스
+	 * @param todoNo
+	 * @return int 행의 개수
+	 * @throws Exception
+	 */
+	int tododelete(int todoNo)throws Exception;
+
+	/**할 일 수정 서비스
+	 * @param todoNo
+	 * @param title
+	 * @param detail
+	 * @return
+	 */
+	int todoUpdate(int todoNo, String title, String detail)throws Exception;
  
  
  
